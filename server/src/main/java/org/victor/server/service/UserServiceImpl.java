@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.victor.server.dto.SignUpDto;
 import org.victor.server.entity.Comment;
 import org.victor.server.entity.Post;
+import org.victor.server.entity.Role;
 import org.victor.server.entity.User;
 import org.victor.server.exception.EmailExistsException;
 import org.victor.server.exception.UserNotFoundException;
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByEmail(String email) {
-        return userRepository.findbyEmail(email).orElseThrow(UserNotFoundException::new);
+        return userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
     }
 
     @Override
@@ -53,12 +54,12 @@ public class UserServiceImpl implements UserService {
             newUser.setFollowerCount(0);
             newUser.setCreatedAt(new Date());
             newUser.setUpdatedAt(new Date());
+            newUser.setRole(Role.ROLE_USER.name());
 
             User savedUser = userRepository.save(newUser);
         }
         return null;
     }
-
 
     @Override
     public User updateProfileImage(MultipartFile image) {
