@@ -41,7 +41,8 @@ public class User {
     @Column(length = 32, nullable = false)
     private String Role;
 
-    private Boolean accountVerified;
+    private Integer followerCount;
+    private Integer followingCount;
 
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")

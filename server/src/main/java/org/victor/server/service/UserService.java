@@ -16,13 +16,7 @@ public interface UserService {
 
     User createUser(SignUpDto signUpDto);
 
-    User updateEmail(UpdateEmailDto updateEmailDto);
-
-    User updatePassword(UpdatePasswordDto updatePasswordDto);
-
     User updateProfileImage(MultipartFile image);
-
-    void deleteUser();
 
     void followUser(Long userId);
 
