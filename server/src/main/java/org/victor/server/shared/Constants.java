@@ -19,4 +19,5 @@ public class Constants {
 
     public static final String ACCESS_DENIED = "Access Denied!";
     public static final String FORBIDDEN = "Access is Forbidden!";
+    public static final String TOKEN_HEADER = "Jwt-Token";
 }

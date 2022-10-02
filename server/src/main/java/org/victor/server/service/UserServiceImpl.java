@@ -12,6 +12,7 @@ import org.victor.server.entity.User;
 import org.victor.server.exception.EmailExistsException;
 import org.victor.server.exception.UserNotFoundException;
 import org.victor.server.repository.UserRepository;
+import org.victor.server.shared.UserPrincipal;
 
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -55,8 +56,10 @@ public class UserServiceImpl implements UserService {
             newUser.setCreatedAt(new Date());
             newUser.setUpdatedAt(new Date());
             newUser.setRole(Role.ROLE_USER.name());
-
+            newUser.setEnabled(true);
             User savedUser = userRepository.save(newUser);
+            UserPrincipal userPrincipal = new UserPrincipal(savedUser);
+            return savedUser;
         }
         return null;
     }

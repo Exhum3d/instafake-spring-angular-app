@@ -13,9 +13,5 @@ public class ServerApplication {
         SpringApplication.run(ServerApplication.class, args);
     }
 
-    @Bean
-    BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
 }
