@@ -52,5 +52,4 @@ public class Post {
     )
     @JsonIgnore
     private List<User> likeList = new ArrayList<>();
-
 }
