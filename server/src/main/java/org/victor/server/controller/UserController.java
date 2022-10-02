@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.victor.server.dto.LoginDto;
 import org.victor.server.dto.SignUpDto;
@@ -43,5 +44,11 @@ public class UserController {
         HttpHeaders newHttpHeaders = new HttpHeaders();
         newHttpHeaders.add(Constants.TOKEN_HEADER, jwtTokenService.generateToken(userPrincipal));
         return new ResponseEntity<>(loginUser, newHttpHeaders, HttpStatus.OK);
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<?> showProfile(Authentication authentication) {
+        User user = userService.getUserByEmail(authentication.getPrincipal().toString());
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
