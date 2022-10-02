@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
             User user = getUserByEmail(signUpDto.getEmail());
 
             if (user != null) {
-                throw new EmailExistsException();
+                throw new EmailExistsException("email already exists");
             }
         } catch (UserNotFoundException e) {
             User newUser = new User();

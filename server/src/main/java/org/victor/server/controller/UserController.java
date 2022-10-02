@@ -1,6 +1,5 @@
 package org.victor.server.controller;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class UserController {
     private final PostService postService;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody SignUpDto signUpDto) {
+    public ResponseEntity<?> signUp(@RequestBody @Valid SignUpDto signUpDto) {
         User savedUser = userService.createUser(signUpDto);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }

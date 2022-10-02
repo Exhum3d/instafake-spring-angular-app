@@ -43,6 +43,7 @@ public class User {
 
     private Integer followerCount;
     private Integer followingCount;
+    private Boolean enabled;
 
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
