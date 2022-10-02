@@ -2,6 +2,7 @@ package org.victor.server.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -11,11 +12,10 @@ import javax.validation.constraints.Size;
 @Builder
 public class SignUpDto {
 
+    @Email
     private String email;
 
     private String password;
-
-    private String confirmPassword;
 
     @Size(max = 64)
     private String firstName;
