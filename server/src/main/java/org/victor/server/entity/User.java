@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -47,4 +49,29 @@ public class User {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private Date updatedAt;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_follow",
+            joinColumns = @JoinColumn(name = "followed_id"),
+            inverseJoinColumns = @JoinColumn(name = "follower_id")
+    )
+    @JsonIgnore
+    private List<User> followerUsers = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "followerUsers")
+    @JsonIgnore
+    private List<User> followedUsers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Post> posts = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "likedPosts", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Post> likedPosts = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "likedComments", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Comment> likedComments = new ArrayList<>();
 }
