@@ -33,6 +33,10 @@ public class Comment {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private Date updatedAt;
 
+    @OneToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
+
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
     @JsonIgnore

@@ -67,11 +67,11 @@ public class User {
     @JsonIgnore
     private List<Post> posts = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "likedPosts", cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "likeList", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Post> likedPosts = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "likedComments", cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "likeList", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Comment> likedComments = new ArrayList<>();
 }
