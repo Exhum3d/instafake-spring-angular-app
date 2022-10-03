@@ -17,10 +17,12 @@ export class PostService {
   constructor(private httpClient: HttpClient) {
   }
 
-  createNewPost(content: string, postPhoto: File, postTags: any[]): Observable<Post | HttpErrorResponse> {
+  createNewPost(content: string, postPhoto: File): Observable<Post | HttpErrorResponse> {
     const formData = new FormData();
     formData.append('text', content);
     formData.append('image', postPhoto);
+    console.log(content)
+    console.log(postPhoto)
     return this.httpClient.post<Post | HttpErrorResponse>(`${this.host}/posts/create`, formData);
   }
 
@@ -29,6 +31,7 @@ export class PostService {
     formData.append('text', content);
     formData.append('image', postPhoto);
     return this.httpClient.post<Post | HttpErrorResponse>(`${this.host}/posts/${postId}/update`, formData);
+
   }
 
   deletePostPhoto(postId: number): Observable<any | HttpErrorResponse> {

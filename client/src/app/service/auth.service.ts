@@ -77,4 +77,12 @@ export class AuthService {
   login(userLogin: UserLogin): Observable<HttpResponse<User> | HttpErrorResponse> {
     return this.httpClient.post<User>(`${this.host}/login`, userLogin, {observe: 'response'});
   }
+
+  getAuthUserId(): number {
+    return this.getAuthUserFromCache().id;
+  }
+
+  getAuthTokenFromCache(): string {
+    return localStorage.getItem('authToken');
+  }
 }

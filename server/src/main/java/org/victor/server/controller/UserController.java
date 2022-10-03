@@ -31,8 +31,6 @@ public class UserController {
     private final PostService postService;
     private final JwtTokenService jwtTokenService;
     private final AuthenticationManager authenticationManager;
-    private final UserResponse userResponse;
-    private final PostResponse postResponse;
 
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody @Valid SignUpDto signUpDto) {

@@ -3,7 +3,7 @@ export class User {
   email: string;
   firstName: string;
   lastName: string;
-  profilePhoto: string;
+  profileImage: string;
   role: string;
   followerCount: number;
   followingCount: number;

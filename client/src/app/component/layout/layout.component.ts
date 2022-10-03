@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {AuthService} from "../../service/auth.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {PostDialogComponent} from "../post-dialog/post-dialog.component";
 
 @Component({
   selector: 'app-layout',
@@ -56,14 +57,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  // openPostDialog(): void {
-  //   this.matDialog.open(PostDialogComponent, {
-  //     data: null,
-  //     autoFocus: false,
-  //     minWidth: '500px',
-  //     maxWidth: '700px'
-  //   });
-  // }
+  openPostDialog(): void {
+    this.matDialog.open(PostDialogComponent, {
+      data: null,
+      autoFocus: false,
+      minWidth: '500px',
+      maxWidth: '700px'
+    });
+  }
 
   // openSearchDialog(): void {
   //   this.matDialog.open(SearchDialogComponent, {
@@ -71,7 +72,5 @@ export class LayoutComponent implements OnInit, OnDestroy {
   //     width: '500px'
   //   });
   // }
-  openPostDialog() {
-    console.log("Merge");
-  }
+
 }
