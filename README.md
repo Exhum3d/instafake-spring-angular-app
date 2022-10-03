@@ -4,4 +4,4 @@
 
 ## ER Diagram
 
-![Diagram](http://url/to/img.png)
+![Diagram](https://github.com/Exhum3d/instafake-spring-angular-app/blob/main/instafake-erd.png)
