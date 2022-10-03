@@ -33,6 +33,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import { ProfileComponent } from './component/profile/profile.component';
 import { LogoutComponent } from './component/logout/logout.component';
+import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LogoutComponent } from './component/logout/logout.component';
     LoginComponent,
     SnackBarComponent,
     ProfileComponent,
-    LogoutComponent
+    LogoutComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
