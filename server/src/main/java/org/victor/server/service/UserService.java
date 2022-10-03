@@ -16,6 +16,8 @@ public interface UserService {
 
     User createUser(SignUpDto signUpDto);
 
+    User getAuthenticatedUser();
+
     User updateProfileImage(MultipartFile image);
 
     void followUser(Long userId);
