@@ -35,7 +35,6 @@ public class PostServiceImpl implements PostService {
     private final Environment environment;
     private final FileNamingUtil fileNamingUtil;
     private final FileUploadUtil fileUploadUtil;
-    private final PostResponse postResponse;
 
     @Override
     public Post getPostById(Long postId) {
