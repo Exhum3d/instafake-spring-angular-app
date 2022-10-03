@@ -4,3 +4,4 @@
 
 ## ER Diagram
 
+![Diagram](http://url/to/img.png)
