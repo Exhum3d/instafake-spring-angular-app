@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
-import { User } from '../model/user.model';
+import {User} from '../model/user.model';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Post} from "../model/post.model";
+import {PostResponse} from "../model/post-response.model";
+import {CommentResponse} from "../model/comment-response.model";
 
 @Injectable({
   providedIn: 'root'
