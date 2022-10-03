@@ -2,7 +2,18 @@
   <mat-card class="mat-elevation-z3">
     <mat-card-title class="text-center ps-3 pt-5 pe-3">Instafake Login Form</mat-card-title>
     <mat-card-content class="p-4">
-      <form [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()"></form>
+      <form [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
+        <mat-form-field class="w-100 pb-2" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email" placeholder="Ex. johndoe@example.com">
+          <mat-error *ngIf="email.hasError('required')">
+            Email is <b>required</b>
+          </mat-error>
+          <mat-error *ngIf="email.hasError('email') || email.hasError('serverError')">
+            Please, enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </form>
     </mat-card-content>
   </mat-card>
 

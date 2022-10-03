@@ -5,6 +5,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {UserSignup} from "../model/user-signup.model";
 import {User} from "../model/user.model";
+import {UserLogin} from "../model/user-login.model";
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,25 @@ export class AuthService {
 
   getAuthUserFromCache(): User {
     return JSON.parse(localStorage.getItem('authUser'));
+  }
+
+  isUserLoggedIn(): boolean {
+    this.loadTokenFromCache();
+
+    if (this.authToken != null && this.authToken != '') {
+      if (this.jwtService.decodeToken(this.authToken).sub != null || '') {
+        if (!this.jwtService.isTokenExpired(this.authToken)) {
+          this.principal = this.jwtService.decodeToken(this.authToken).sub;
+          return true;
+        }
+      }
+    }
+
+    this.logout();
+    return false;
+  }
+
+  login(userLogin: UserLogin): Observable<HttpResponse<User> | HttpErrorResponse> {
+    return this.httpClient.post<User>(`${this.host}/login`, userLogin, {observe: 'response'});
   }
 }
