@@ -44,6 +44,8 @@ import {PostComponent} from './component/post/post.component';
 import {PostDialogComponent} from './component/post-dialog/post-dialog.component';
 import {AuthGuard} from "./guard/auth.guard";
 import {AuthInterceptor} from "./interceptor/auth.interceptor";
+import { WaitingDialogComponent } from './component/waiting-dialog/waiting-dialog.component';
+import { PostCommentDialogComponent } from './component/post-comment-dialog/post-comment-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {AuthInterceptor} from "./interceptor/auth.interceptor";
     ConfirmationDialogComponent,
     PhotoUploadDialogComponent,
     PostComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    WaitingDialogComponent,
+    PostCommentDialogComponent
   ],
   imports: [
     BrowserModule,

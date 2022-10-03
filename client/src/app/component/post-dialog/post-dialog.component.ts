@@ -83,11 +83,6 @@ export class PostDialogComponent implements OnInit, OnDestroy {
     );
   }
 
-  openAddTagDialog(e: Event): void {
-    e.preventDefault();
-
-
-  }
 
   handlePostSubmit(): void {
     if (this.content.value.length <= 0 && !this.postPhoto) {

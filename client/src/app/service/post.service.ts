@@ -38,12 +38,8 @@ export class PostService {
     return this.httpClient.post<any | HttpErrorResponse>(`${this.host}/posts/${postId}/photo/delete`, null);
   }
 
-  deletePost(postId: number, isTypeShare: boolean): Observable<any | HttpErrorResponse> {
-    if (isTypeShare) {
-      return this.httpClient.post<any | HttpErrorResponse>(`${this.host}/posts/${postId}/share/delete`, null);
-    } else {
-      return this.httpClient.post<any | HttpErrorResponse>(`${this.host}/posts/${postId}/delete`, null);
-    }
+  deletePost(postId: number): Observable<any | HttpErrorResponse> {
+    return this.httpClient.post<any | HttpErrorResponse>(`${this.host}/posts/${postId}/delete`, null);
   }
 
   getPostById(postId: number): Observable<PostResponse | HttpErrorResponse> {

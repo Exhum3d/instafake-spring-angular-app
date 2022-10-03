@@ -11,6 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {SnackBarComponent} from "../snack-bar/snack-bar.component";
 import {Constants} from "../../shared/constants";
 import {PostDialogComponent} from "../post-dialog/post-dialog.component";
+import {WaitingDialogComponent} from "../waiting-dialog/waiting-dialog.component";
 
 @Component({
   selector: 'app-post',
@@ -62,24 +63,6 @@ export class PostComponent implements OnInit {
     // );
   }
 
-  openShareDialog(): void {
-    // const dialogRef = this.matDialog.open(PostShareDialogComponent, {
-    //   data: this.postResponse.post,
-    //   autoFocus: false,
-    //   minWidth: '500px',
-    //   maxWidth: '700px'
-    // });
-  }
-
-  openShareConfirmDialog(): void {
-    // this.matDialog.open(ShareConfirmDialogComponent, {
-    //   data: this.postResponse.post,
-    //   autoFocus: false,
-    //   minWidth: '500px',
-    //   maxWidth: '700px'
-    // });
-  }
-
   openPostEditDialog(): void {
     const dialogRef = this.matDialog.open(PostDialogComponent, {
       data: this.postResponse.post,
@@ -104,33 +87,33 @@ export class PostComponent implements OnInit {
   }
 
   deletePost(postId: number): void {
-    // const dialogRef = this.matDialog.open(WaitingDialogComponent, {
-    //   data: 'Please, wait while we are deleting the post.',
-    //   width: '500px',
-    //   disableClose: true
-    // });
-    //
-    // this.subscriptions.push(
-    //   this.postService.deletePost(postId, isTypeShare).subscribe({
-    //     next: (response: any) => {
-    //       this.postDeletedEvent.emit(this.postResponse);
-    //       dialogRef.close();
-    //       this.matSnackbar.openFromComponent(SnackbarComponent, {
-    //         data: 'Post deleted successfully.',
-    //         panelClass: ['bg-success'],
-    //         duration: 5000
-    //       });
-    //     },
-    //     error: (errorResponse: HttpErrorResponse) => {
-    //       this.matSnackbar.openFromComponent(SnackbarComponent, {
-    //         data: AppConstants.snackbarErrorContent,
-    //         panelClass: ['bg-danger'],
-    //         duration: 5000
-    //       });
-    //       dialogRef.close();
-    //     }
-    //   })
-    // );
+    const dialogRef = this.matDialog.open(WaitingDialogComponent, {
+      data: 'Please, wait while we are deleting the post.',
+      width: '500px',
+      disableClose: true
+    });
+
+    this.subscriptions.push(
+      this.postService.deletePost(postId).subscribe({
+        next: (response: any) => {
+          this.postDeletedEvent.emit(this.postResponse);
+          dialogRef.close();
+          this.matSnackbar.openFromComponent(SnackBarComponent, {
+            data: 'Post deleted successfully.',
+            panelClass: ['bg-success'],
+            duration: 5000
+          });
+        },
+        error: (errorResponse: HttpErrorResponse) => {
+          this.matSnackbar.openFromComponent(SnackBarComponent, {
+            data: Constants.snackbarErrorContent,
+            panelClass: ['bg-danger'],
+            duration: 5000
+          });
+          dialogRef.close();
+        }
+      })
+    );
   }
 
   likeOrUnlikePost(likedByAuthUser: boolean) {

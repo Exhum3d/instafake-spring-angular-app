@@ -33,13 +33,11 @@ public class PostController {
             @RequestParam(value = "text", required = false) Optional<String> content,
             @RequestParam(name = "image", required = false) Optional<MultipartFile> postPhoto
     ) throws JsonProcessingException {
-       /* if ((content.isEmpty() || (content.get().length() == 0)) &&
+        if ((content.isEmpty() || (content.get().length() == 0)) &&
                 (postPhoto.isEmpty() || (postPhoto.get().getSize() <= 0))) {
             throw new EmptyPostException();
-        }*/
+        }
 
-        System.out.println(content.get());
-        System.out.println(postPhoto.toString());
         String contentToAdd = content.isEmpty() ? null : content.get();
         MultipartFile postPhotoToAdd = postPhoto.isEmpty() ? null : postPhoto.get();
 
