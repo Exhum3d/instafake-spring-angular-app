@@ -122,4 +122,14 @@ public class UserServiceImpl implements UserService {
     public List<User> getLikesByComment(Comment comment, Integer page, Integer size) {
         return null;
     }
+
+    private String getPhotoNameFromPhotoUrl(String photoUrl) {
+        if (photoUrl != null) {
+            String stringToOmit = environment.getProperty("app.root.backend") + File.separator
+                    + environment.getProperty("upload.user.images") + File.separator;
+            return photoUrl.substring(stringToOmit.length());
+        } else {
+            return null;
+        }
+    }
 }
